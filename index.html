@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vliegtuig Spotters Collectie</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>✈️ Spotters Collectie</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="eindhoven.html">Eindhoven Foto's</a></li>
+        <li><a href="schiphol.html">Schiphol Foto's</a></li>
+        <li><a href="brussels.html">Brussels Foto's</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Welkom op mijn Spotters Website</h2>
+      <p>Bekijk hier mijn collectie vliegtuigfoto's, gemaakt op diverse luchthavens in Europa.</p>
+    </section>
+
+    <section class="map">
+      <h3>Spotlocaties op de kaart</h3>
+      <iframe src="https://www.google.com/maps/d/embed?mid=YOUR_MAP_ID" width="100%" height="400"></iframe>
+    </section>
+
+    <section class="carousel-section">
+      <h3>Recente Foto's</h3>
+      <div class="carousel-container">
+        <div class="carousel-slide"><img src="img/plane1.jpg" alt="Airbus A350"></div>
+        <div class="carousel-slide"><img src="img/plane2.jpg" alt="Boeing 747"></div>
+        <div class="carousel-slide"><img src="img/plane3.jpg" alt="Embraer 190"></div>
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </section>
+
+    <section class="mymap">
+      <h2>📍 Mijn Spotlocaties</h2>
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=YOUR_CUSTOM_MAP_ID" width="100%" height="400"></iframe>
+    </section>
+
+    <section class="carousel-section">
+      <h2>📸 Hoogtepunten</h2>
+      <div class="carousel-container">
+        <div class="carousel-slide"><img src="img/sample1.jpg" alt="Foto 1"></div>
+        <div class="carousel-slide"><img src="img/sample2.jpg" alt="Foto 2"></div>
+        <div class="carousel-slide"><img src="img/sample3.jpg" alt="Foto 3"></div>
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </section>
+
+    <section class="instructions">
+      <h2>➕ Meer Pagina's Toevoegen</h2>
+      <p>Maak een nieuwe HTML-pagina aan (bijvoorbeeld <code>parijs.html</code>) met dezelfde structuur als de andere pagina's. Voeg deze toe aan het menu in <code>index.html</code>.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Spotters Collectie. Alle rechten voorbehouden.</p>
+    <p>Voor nieuwe pagina's: kopieer een bestaand HTML-bestand (bijv. <code>eindhoven.html</code>), pas titel en inhoud aan, en voeg een link toe in het navigatiemenu.</p>
+  </footer>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("carousel-slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1} 
+      slides[slideIndex-1].style.display = "block"; 
+      setTimeout(showSlides, 3000);
+    }
+
+    const prevButtons = document.querySelectorAll('.prev');
+    const nextButtons = document.querySelectorAll('.next');
+
+    prevButtons.forEach((btn, index) => {
+      btn.addEventListener('click', () => changeSlide(-1, index));
+    });
+
+    nextButtons.forEach((btn, index) => {
+      btn.addEventListener('click', () => changeSlide(1, index));
+    });
+
+    function changeSlide(n, carouselIndex) {
+      let slides = document.getElementsByClassName("carousel-container")[carouselIndex].children;
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+      }
+      slideIndex += n;
+      if (slideIndex > slides.length) {slideIndex = 1} 
+      if (slideIndex < 1) {slideIndex = slides.length}
+      slides[slideIndex-1].style.display = "block"; 
+    }
+  </script>
+</body>
+</html>
